@@ -12,7 +12,7 @@ export default function Layout() {
         className="items-center justify-between flex bg-gray-800 bg-opacity-90 px-12 py-4 mb-4 mx-auto shadow-2xl">
         <div className="text-2xl text-white font-semibold inline-flex items-center">
           {/* Logo et titre */}
-          
+          {/*  <Logo/> */}
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
               alt="logo"
@@ -50,13 +50,15 @@ export default function Layout() {
       </header>
 
       {/* Contenu principal */}
-      <main className="max-w-6xl mx-auto px-8 py-10">
-        <Outlet />
-      </main>
+      <main className="container mx-auto p-4 ">
+  <Outlet />
+</main>
+
+
 
       {/* Footer */}
-      <footer className="bg-indigo-900 text-white text-center py-3 mt-8">
-        © {new Date().getFullYear()} School Management — Tous droits réservés.
+      <footer  >
+         
       </footer>
     </div>
   );
