@@ -1,10 +1,15 @@
-import { Outlet, Link } from "react-router-dom";
-import { useState } from "react";
-import {  LOGIN_ROUTE } from "../router";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {  LOGIN_ROUTE, STUDENT_DASHBORD_ROUTE } from "../router";
 
-export default function Layout() {
+export default function GuestLayout() {
   const [darkMode, setDarkMode] = useState(false);
-
+  const navigate = useNavigate
+  useEffect(()=>{
+  if(!window.localStorage.getItem('ACCES_TOKEN')){
+    navigate(STUDENT_DASHBORD_ROUTE)
+  }
+  })
   return (
     <div className={darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"}>
       {/* Header */}

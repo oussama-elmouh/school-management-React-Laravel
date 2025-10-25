@@ -1,9 +1,20 @@
-import { Outlet, Link } from "react-router-dom";
-import { useState } from "react";
-import {  LOGIN_ROUTE } from "../router";
+import { Outlet, Link,  useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { LOGIN_ROUTE } from "../../router";
+import { axiosClient } from "../../../api/axios";
+ 
 
-export default function Layout() {
+export default function StudentDashboardLayout() {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate
+  useEffect(()=>{
+  if(!window.localStorage.getItem('ACCES_TOKEN')){
+    navigate(LOGIN_ROUTE)
+  }
+  axiosClient.get('/user').then(response => {
+    console.log(response)
+  })
+  })
 
   return (
     <div className={darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"}>
